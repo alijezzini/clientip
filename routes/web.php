@@ -11,12 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
-
 Auth::routes();
-
+Route::get('/', 'HomeController@index')->middleware('auth')->name('home');
 Route::get('/clientip', 'HomeController@index')->name('clientip');
 Route::post('/submitip','HomeController@submit');
 Route::post('/editip','HomeController@editClient');
