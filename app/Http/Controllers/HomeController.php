@@ -30,33 +30,17 @@ class HomeController extends Controller
         return view('home',['ips'=>$ips]);
     }
     function submit(Request $req){
-        $gateway="";
-        $arr = $req->get('gateway');
-        for($i=0;$i<count($arr);$i++){
-            $gateway .= $arr[$i];
-            if($i+1!=count($arr)){
-                $gateway .="/";
-            }
-        }
         
         $client = new clientip;
         $client->name= $req->name;
         $client->ip= $req->ip;
         $client->type= $req->type;
-        $client->gateway= $gateway;
+        $client->gateway= $req->gateway;
         $client->save();
         $req->session()->flash('alert-success', 'Client Successfully Added!');
         return redirect()->route('clientip');
     }
     function editClient(Request $req){
-        $gateway="";
-        $arr = $req->get('gateway');
-        for($i=0;$i<count($arr);$i++){
-            $gateway .= $arr[$i];
-            if($i+1!=count($arr)){
-                $gateway .="/";
-            }
-        }
         
         DB::table('clientip')
         ->where('id', $req->cl_id)
@@ -64,7 +48,7 @@ class HomeController extends Controller
             'name' => $req->name,
             'ip' =>$req->ip,
             'type'=>$req->type,
-            'gateway'=>$gateway
+            'gateway'=>$req->gateway
                 ]);
         $req->session()->flash('alert-success', 'Client Edited Successfully!');
         return redirect()->route('clientip');

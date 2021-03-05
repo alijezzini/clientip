@@ -65,27 +65,23 @@
 </div>
             <div class="form-group"><label for="note"><b>Gateway</b></label><br>
             <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="UK" value="UK">
-  <label class="form-check-label" for="UK">UK</label>
+  <input class="form-check-input" name="gateway" type="radio" id="UK" value="UK">
+  <label class="form-check-label" for="UK">UK/GR</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="GR" value="GR" >
-  <label class="form-check-label" for="GR">GR</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="Nigeria" value="Nigeria" >
+  <input class="form-check-input" name="gateway" type="radio" id="Nigeria" value="Nigeria" >
   <label class="form-check-label" for="Nigeria">Nigeria</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="HongKong" value="HongKong" >
+  <input class="form-check-input" name="gateway" type="radio" id="HongKong" value="HongKong" >
   <label class="form-check-label" for="HongKong">HongKong</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="Pakistan" value="Pakistan" >
+  <input class="form-check-input" name="gateway" type="radio" id="Pakistan" value="Pakistan" >
   <label class="form-check-label" for="Pakistan">Pakistan</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="Enterprise" value="Enterprise" >
+  <input class="form-check-input" name="gateway" type="radio" id="Enterprise" value="Enterprise" >
   <label class="form-check-label" for="Enterprise">Enterprise</label>
 </div>
 </div>
@@ -128,27 +124,23 @@
 </div>
             <div class="form-group"><label><b>Gateway</b></label><br>
             <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="editUK" value="UK">
-  <label class="form-check-label" for="editUK">UK</label>
+  <input class="form-check-input" name="gateway" type="radio" id="editUK" value="UK">
+  <label class="form-check-label" for="editUK">UK/GR</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="editGR" value="GR">
-  <label class="form-check-label" for="editGR">GR</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="editNigeria" value="Nigeria">
+  <input class="form-check-input" name="gateway" type="radio" id="editNigeria" value="Nigeria">
   <label class="form-check-label" for="editNigeria">Nigeria</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="editHongKong" value="HongKong">
+  <input class="form-check-input" name="gateway" type="radio" id="editHongKong" value="HongKong">
   <label class="form-check-label" for="editHongKong">HongKong</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="editPakistan" value="Pakistan">
+  <input class="form-check-input" name="gateway" type="radio" id="editPakistan" value="Pakistan">
   <label class="form-check-label" for="editPakistan">Pakistan</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway[]" type="checkbox" id="editEnterprise" value="Enterprise">
+  <input class="form-check-input" name="gateway" type="radio" id="editEnterprise" value="Enterprise">
   <label class="form-check-label" for="editEnterprise">Enterprise</label>
 </div>
 
@@ -222,20 +214,7 @@
 <script>
 
 $(document).ready(function() { 
-  $("#AddForm").submit(function(e){
-        
-        if ($('input[type="checkbox"]:checked').length < 1) {
-          e.preventDefault();
-          $("#alertmsg1").css('display', 'block'); 
-        }
-    });
-    $("#EditForm").submit(function(e){
-        
-        if ($('input[type="checkbox"]:checked').length < 1) {
-          e.preventDefault();
-          $("#alertmsg2").css('display', 'block'); 
-        }
-    });
+
     $('#example tbody').on( 'click', '.icon-edit', function () {
      
      
