@@ -65,7 +65,7 @@
 </div>
             <div class="form-group"><label for="note"><b>Gateway</b></label><br>
             <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway" type="radio" id="UK" value="UK" required>
+  <input class="form-check-input" name="gateway" type="radio" id="UK" value="UK/GR" required>
   <label class="form-check-label" for="UK">UK/GR</label>
 </div>
 <div class="form-check form-check-inline">
@@ -124,7 +124,7 @@
 </div>
             <div class="form-group"><label><b>Gateway</b></label><br>
             <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway" type="radio" id="editUK" value="UK" required>
+  <input class="form-check-input" name="gateway" type="radio" id="editUK" value="UK/GR" required>
   <label class="form-check-label" for="editUK">UK/GR</label>
 </div>
 <div class="form-check form-check-inline">
