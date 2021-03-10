@@ -280,7 +280,18 @@ $(document).ready(function() {
         orderCellsTop: true,
         fixedHeader: true,
             "scrollX": true,
-            dom: 'lfr<"toolbar">tip',
+            dom: 'lBfr<"toolbar">tip',
+            buttons: [
+    {
+        text: 'Export Excel',
+        extend: 'excelHtml5',
+        exportOptions: {
+            columns: ':visible',
+            page: 'all'
+        },
+        className:'btn btn-success'
+    }
+],
             "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
             fnInitComplete: function(){
            $('div.toolbar').html('<span id="delete" style="color:#ef3535;cursor:pointer;font-size:13pt;font-weight:bold"><i class="fas fa-trash-alt icon-delete" ></i> Delete</span>');
