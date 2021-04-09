@@ -65,7 +65,7 @@
 </div>
             <div class="form-group"><label for="note"><b>Gateway</b></label><br>
             <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway" type="radio" id="UK" value="UK" required>
+  <input class="form-check-input" name="gateway" type="radio" id="UK" value="UK/GR" required>
   <label class="form-check-label" for="UK">UK/GR</label>
 </div>
 <div class="form-check form-check-inline">
@@ -83,6 +83,12 @@
 <div class="form-check form-check-inline">
   <input class="form-check-input" name="gateway" type="radio" id="Enterprise" value="Enterprise" required>
   <label class="form-check-label" for="Enterprise">Enterprise</label>
+</div>
+</div>
+<div class="form-group"><label for="note"><b>VPN</b></label><br>
+            <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" name="vpn" id="VPN">
+  <label class="form-check-label" for="VPN">VPN</label>
 </div>
 </div>
 <div id="alertmsg1" class="alert alert-danger" role="alert" style="display:none">
@@ -124,7 +130,7 @@
 </div>
             <div class="form-group"><label><b>Gateway</b></label><br>
             <div class="form-check form-check-inline">
-  <input class="form-check-input" name="gateway" type="radio" id="editUK" value="UK" required>
+  <input class="form-check-input" name="gateway" type="radio" id="editUK" value="UK/GR" required>
   <label class="form-check-label" for="editUK">UK/GR</label>
 </div>
 <div class="form-check form-check-inline">
@@ -143,7 +149,12 @@
   <input class="form-check-input" name="gateway" type="radio" id="editEnterprise" value="Enterprise" required>
   <label class="form-check-label" for="editEnterprise">Enterprise</label>
 </div>
-
+<div class="form-group"><label for="note"><b>VPN</b></label><br>
+            <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" name="editvpn" id="editVPN">
+  <label class="form-check-label" for="editVPN">VPN</label>
+</div>
+</div>
 </div>
 <div id="alertmsg2" class="alert alert-danger" role="alert" style="display:none">
   Please select at least one Gateway!
@@ -151,7 +162,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                <button id="myFormSubmit" class="btn btn-success" type="submit">Edit</button>
+                <button id="myFormSubmit2" class="btn btn-success" type="submit">Edit</button>
             </div>
         </div>
     </div>
@@ -180,6 +191,7 @@
                 <th>IP</th>
                 <th>Type</th>
                 <th>Gateway</th>
+                <th>VPN</th>
                 <th></th>
             </tr>
         </thead>
@@ -197,6 +209,11 @@
             <td>{{ $ip->ip }}</td>
             <td>{{ $ip->type}}</td>
             <td>{{ $ip->gateway }}</td>
+            @if($ip->vpn ==1)
+            <td style="text-align:center" class="true"><i class="fas fa-check" style="color:green"></i></td>
+            @else
+            <td  style="text-align:center" class="false"><i class="fas fa-times" style="color:grey"></i></td>
+            @endif
             <td style="text-align:right"><div class="btn-group">
                     <i class="fas fa-edit icon-edit" data-val="{{$ip->id}}" style="margin-right:5px;color:green;cursor:pointer;font-size:18pt"></i>
 </div></td>
@@ -223,9 +240,16 @@ $(document).ready(function() {
      var ip = $(this).closest('tr').find('td:eq(2)').text();
      var type = $(this).closest('tr').find('td:eq(3)').text();
      var gateway = $(this).closest('tr').find('td:eq(4)').text();
+     var vpn = $(this).closest('tr').find('td:eq(5)').attr('class');
      $("#cl_id").val(cl_id);
      $("#editname").val(name);
      $("#editip").val(ip);
+     if(vpn=="true"){
+        $("#editVPN").prop('checked', true);
+     }
+     else{
+        $("#editVPN").prop('checked', false);
+     }
         if(type=="HTTP"){
             $("#editSMPP").prop('checked', false);
             $("#editHTTP").prop('checked', true);
@@ -280,7 +304,18 @@ $(document).ready(function() {
         orderCellsTop: true,
         fixedHeader: true,
             "scrollX": true,
-            dom: 'lfr<"toolbar">tip',
+            dom: 'lBfr<"toolbar">tip',
+            buttons: [
+    {
+        text: 'Export Excel',
+        extend: 'excelHtml5',
+        exportOptions: {
+            columns: ':visible',
+            page: 'all'
+        },
+        className:'btn btn-success'
+    }
+],
             "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
             fnInitComplete: function(){
            $('div.toolbar').html('<span id="delete" style="color:#ef3535;cursor:pointer;font-size:13pt;font-weight:bold"><i class="fas fa-trash-alt icon-delete" ></i> Delete</span>');
