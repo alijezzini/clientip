@@ -212,7 +212,7 @@
             @if($ip->vpn ==1)
             <td style="text-align:center" class="true"><i class="fas fa-check" style="color:green"></i></td>
             @else
-            <td  style="text-align:center" class="false"><i class="fas fa-times" style="color:grey"></i></td>
+            <td  style="text-align:center" class="false"><i class="fas fa-times" style="color:red"></i></td>
             @endif
             <td style="text-align:right"><div class="btn-group">
                     <i class="fas fa-edit icon-edit" data-val="{{$ip->id}}" style="margin-right:5px;color:green;cursor:pointer;font-size:18pt"></i>
